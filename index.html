@@ -18,7 +18,7 @@
     <meta name="twitter:title" content="Town Wall">
     <meta name="twitter:description" content="A hyper-local community app for the UK, organized by City → Zone.">
     <meta name="twitter:image" content="https://townwall.co.uk/assets/logo.png">
-    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
     <link rel="apple-touch-icon" href="/assets/logo.png">
     <link rel="stylesheet" href="/styles.css">
 </head>
@@ -83,7 +83,7 @@
                         </div>
                         <div class="tw-tour-media">
                             <div class="tw-media-frame">
-                                <img src="/assets/screenshot-feed.svg" alt="Town Wall feed screenshot">
+                                <img src="/assets/screenshot-feed.png" alt="Town Wall feed screenshot">
                             </div>
                         </div>
                     </div>
@@ -96,7 +96,7 @@
                         </div>
                         <div class="tw-tour-media">
                             <div class="tw-media-frame">
-                                <img src="/assets/screenshot-post.svg" alt="Town Wall post screenshot">
+                                <img src="/assets/screenshot-post.png" alt="Town Wall post screenshot">
                             </div>
                         </div>
                     </div>
@@ -109,7 +109,7 @@
                         </div>
                         <div class="tw-tour-media">
                             <div class="tw-media-frame">
-                                <img src="/assets/screenshot-chat.svg" alt="Town Wall chat screenshot">
+                                <img src="/assets/screenshot-chat.png" alt="Town Wall chat screenshot">
                             </div>
                         </div>
                     </div>
@@ -122,7 +122,7 @@
                         </div>
                         <div class="tw-tour-media">
                             <div class="tw-media-frame">
-                                <img src="/assets/screenshot-businesses.svg" alt="Town Wall businesses screenshot">
+                                <img src="/assets/screenshot-businesses.png" alt="Town Wall businesses screenshot">
                             </div>
                         </div>
                     </div>
@@ -136,7 +136,7 @@
                         </div>
                         <div class="tw-tour-media">
                             <div class="tw-media-frame">
-                                <img src="/assets/screenshot-post.svg" alt="Town Wall talent screenshot">
+                                <img src="/assets/screenshot-talent.png" alt="Town Wall talent screenshot">
                             </div>
                         </div>
                     </div>
@@ -150,7 +150,7 @@
                         </div>
                         <div class="tw-tour-media">
                             <div class="tw-media-frame">
-                                <img src="/assets/screenshot-chat.svg" alt="Towny assistant screenshot">
+                                <img src="/assets/screenshot-towny.png" alt="Towny assistant screenshot">
                             </div>
                         </div>
                     </div>
@@ -164,7 +164,7 @@
                         </div>
                         <div class="tw-tour-media">
                             <div class="tw-media-frame">
-                                <img src="/assets/screenshot-chat.svg" alt="Town Wall calls screenshot">
+                                <img src="/assets/screenshot-calls.png" alt="Town Wall calls screenshot">
                             </div>
                         </div>
                     </div>
@@ -178,7 +178,7 @@
                         </div>
                         <div class="tw-tour-media">
                             <div class="tw-media-frame">
-                                <img src="/assets/screenshot-feed.svg" alt="Town Wall polls screenshot">
+                                <img src="/assets/screenshot-polls.png" alt="Town Wall polls screenshot">
                             </div>
                         </div>
                     </div>
@@ -206,10 +206,10 @@
 
                     <div class="tw-actions">
                         <a class="tw-btn" href="https://testflight.apple.com/join/pDXYmMhf" target="_blank" rel="noopener noreferrer" aria-label="Join the iOS beta on TestFlight">
-                            <img src="/assets/appstore-badge.svg" alt="App Store" style="height: 28px;">
+                            <img src="/assets/appstore-badge.png" alt="App Store" style="height: 28px;">
                         </a>
                         <a class="tw-btn" href="#android-beta" aria-label="Request access to the Android beta">
-                            <img src="/assets/googleplay-badge.svg" alt="Google Play" style="height: 28px;">
+                            <img src="/assets/googleplay-badge.png" alt="Google Play" style="height: 28px;">
                         </a>
                     </div>
 
@@ -245,20 +245,64 @@
 
     <script>
         (function () {
+            var prefersReducedMotion = false;
+            try {
+                prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            } catch (e) {}
+
             var revealNodes = Array.prototype.slice.call(document.querySelectorAll('.tw-reveal'));
+
+            revealNodes.forEach(function (node, idx) {
+                node.style.setProperty('--tw-reveal-delay', (idx * 90) + 'ms');
+            });
+
+            function revealNode(node) {
+                if (!node) return;
+                if (prefersReducedMotion) {
+                    node.classList.add('is-visible');
+                    return;
+                }
+                requestAnimationFrame(function () {
+                    setTimeout(function () {
+                        node.classList.add('is-visible');
+                    }, 30);
+                });
+            }
+
             if ('IntersectionObserver' in window) {
                 var io = new IntersectionObserver(function (entries) {
                     entries.forEach(function (entry) {
                         if (entry.isIntersecting) {
-                            entry.target.classList.add('is-visible');
+                            revealNode(entry.target);
                             io.unobserve(entry.target);
                         }
                     });
-                }, { threshold: 0.12 });
+                }, { threshold: 0.18, rootMargin: '0px 0px -10% 0px' });
                 revealNodes.forEach(function (n) { io.observe(n); });
             } else {
-                revealNodes.forEach(function (n) { n.classList.add('is-visible'); });
+                revealNodes.forEach(function (n) { revealNode(n); });
             }
+
+            (function () {
+                if (prefersReducedMotion) return;
+                var bg = document.querySelector('.tw-bg');
+                if (!bg) return;
+                var ticking = false;
+
+                function update() {
+                    ticking = false;
+                    var y = window.scrollY || window.pageYOffset || 0;
+                    var shift = Math.max(-32, Math.min(32, (y * -0.04)));
+                    bg.style.setProperty('--tw-bg-shift', shift.toFixed(2) + 'px');
+                }
+
+                update();
+                window.addEventListener('scroll', function () {
+                    if (ticking) return;
+                    ticking = true;
+                    requestAnimationFrame(update);
+                }, { passive: true });
+            })();
 
             var form = document.querySelector('form[name="android-beta"]');
             if (!form) return;
