@@ -1,0 +1,9 @@
+[build]
+  command = ""
+  publish = "."
+
+# Ensure SPA-style paths aren't needed; site is static HTML.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
