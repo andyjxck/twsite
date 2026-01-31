@@ -50,7 +50,7 @@
                     </div>
                 </section>
 
-                <section class="tw-section tw-reveal" id="features">
+                <section class="tw-section tw-reveal tw-section-alt" id="features">
                     <h2 class="tw-section-title">A local network that doesn’t want your identity.</h2>
                     <p class="tw-subtitle">Town Wall is designed around a simple idea: you shouldn’t need to hand over a phone number or email address to talk to your neighbors.</p>
 
@@ -184,7 +184,7 @@
                     </div>
                 </section>
 
-                <section class="tw-section tw-reveal" id="privacy">
+                <section class="tw-section tw-reveal tw-section-alt" id="privacy">
                     <h2 class="tw-section-title">Privacy, clearly.</h2>
                     <p class="tw-subtitle">Town Wall is built around data minimization: collect less, leak less, stress less.</p>
                     <div class="tw-prose">
@@ -213,7 +213,7 @@
                         </a>
                     </div>
 
-                    <div id="android-beta" class="tw-beta tw-reveal">
+                    <div id="android-beta" class="tw-beta">
                         <h3 class="tw-beta-title">Android beta request</h3>
                         <p class="tw-beta-subtitle">Enter the Google account email you want added to testing.</p>
 
@@ -250,10 +250,14 @@
                 prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
             } catch (e) {}
 
-            var revealNodes = Array.prototype.slice.call(document.querySelectorAll('.tw-reveal'));
+            var revealNodes = Array.prototype.slice.call(document.querySelectorAll('.tw-hero.tw-reveal, .tw-section.tw-reveal'));
+
+            function clamp(n, min, max) {
+                return Math.max(min, Math.min(max, n));
+            }
 
             revealNodes.forEach(function (node, idx) {
-                node.style.setProperty('--tw-reveal-delay', (idx * 90) + 'ms');
+                node.style.setProperty('--tw-reveal-delay', clamp(idx * 80, 0, 220) + 'ms');
             });
 
             function revealNode(node) {
@@ -282,6 +286,15 @@
             } else {
                 revealNodes.forEach(function (n) { revealNode(n); });
             }
+
+            revealNodes.forEach(function (n) {
+                try {
+                    var rect = n.getBoundingClientRect();
+                    if (rect.top < (window.innerHeight || document.documentElement.clientHeight) * 0.92) {
+                        revealNode(n);
+                    }
+                } catch (e) {}
+            });
 
             (function () {
                 if (prefersReducedMotion) return;
