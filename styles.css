@@ -340,7 +340,7 @@ pre {
   isolation: isolate;
 }
 
-.tw-section.tw-reveal::after {
+.tw-js.tw-anim .tw-section.tw-reveal::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -353,13 +353,13 @@ pre {
   pointer-events: none;
 }
 
-.tw-section.tw-reveal.is-visible::after {
+.tw-js.tw-anim .tw-section.tw-reveal.is-visible::after {
   opacity: 0;
   transform: translateY(0) scale(1);
 }
 
 @media (max-width: 720px) {
-  .tw-section.tw-reveal::after {
+  .tw-js.tw-anim .tw-section.tw-reveal::after {
     inset: 0;
     background:
       radial-gradient(780px 460px at 50% 14%, rgba(0,0,0,0.00) 0%, rgba(0,0,0,0.22) 48%, rgba(0,0,0,0.66) 80%, rgba(0,0,0,0.90) 100%);
@@ -400,6 +400,12 @@ pre {
 }
 
 .tw-reveal {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+.tw-js.tw-anim .tw-reveal {
   opacity: 0;
   transform: translateY(22px) scale(0.985);
   filter: blur(6px);
@@ -408,7 +414,7 @@ pre {
   will-change: opacity, transform;
 }
 
-.tw-reveal.is-visible {
+.tw-js.tw-anim .tw-reveal.is-visible {
   opacity: 1;
   transform: translateY(0) scale(1);
   filter: blur(0);
