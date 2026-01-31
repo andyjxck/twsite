@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="1280" viewBox="0 0 720 1280">
+  <rect width="720" height="1280" rx="64" fill="rgba(255,255,255,0.05)"/>
+  <circle cx="560" cy="320" r="220" fill="rgba(236,72,153,0.22)"/>
+  <rect x="36" y="60" width="648" height="120" rx="28" fill="rgba(0,0,0,0.55)"/>
+  <rect x="36" y="210" width="648" height="420" rx="36" fill="rgba(255,255,255,0.06)"/>
+  <rect x="36" y="660" width="648" height="220" rx="36" fill="rgba(255,255,255,0.06)"/>
+  <rect x="36" y="910" width="648" height="220" rx="36" fill="rgba(255,255,255,0.06)"/>
+  <text x="60" y="132" fill="rgba(255,255,255,0.92)" font-family="Inter, system-ui, -apple-system, Arial" font-size="28" font-weight="800">Screenshot: Businesses</text>
+</svg>

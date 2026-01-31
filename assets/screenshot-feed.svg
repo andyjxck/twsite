@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="1280" viewBox="0 0 720 1280">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="rgba(99,102,241,0.35)"/>
+      <stop offset="1" stop-color="rgba(236,72,153,0.25)"/>
+    </linearGradient>
+  </defs>
+  <rect width="720" height="1280" rx="64" fill="rgba(255,255,255,0.05)"/>
+  <rect x="36" y="40" width="648" height="120" rx="28" fill="rgba(0,0,0,0.55)"/>
+  <rect x="36" y="190" width="648" height="220" rx="28" fill="url(#g)" opacity="0.55"/>
+  <rect x="36" y="430" width="648" height="220" rx="28" fill="rgba(255,255,255,0.06)"/>
+  <rect x="36" y="670" width="648" height="220" rx="28" fill="rgba(255,255,255,0.06)"/>
+  <rect x="36" y="910" width="648" height="220" rx="28" fill="rgba(255,255,255,0.06)"/>
+  <text x="60" y="118" fill="rgba(255,255,255,0.92)" font-family="Inter, system-ui, -apple-system, Arial" font-size="28" font-weight="800">Screenshot: Feed</text>
+</svg>

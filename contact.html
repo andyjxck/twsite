@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Town Wall</title>
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="tw-bg">
+        <div class="tw-shell">
+            <div class="tw-container">
+                <section class="tw-page">
+                    <div class="tw-brand">
+                        <img src="/assets/logo.png" alt="Town Wall">
+                        <span>Town Wall</span>
+                    </div>
+
+                    <h1 class="tw-page-title">Contact</h1>
+                    <div class="tw-page-meta">For support, privacy inquiries, and anything else.</div>
+
+                    <div class="tw-prose">
+                        <p>Email: <a href="mailto:andyblewett991@gmail.com">andyblewett991@gmail.com</a></p>
+                    </div>
+
+                    <form id="contactForm" class="tw-form">
+                        <div class="tw-form-row">
+                            <div>
+                                <label for="name">Your Name</label>
+                                <input class="tw-input" type="text" id="name" name="name" required placeholder="Your name">
+                            </div>
+                            <div>
+                                <label for="email">Your Email</label>
+                                <input class="tw-input" type="email" id="email" name="email" required placeholder="you@example.com">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="subject">Subject</label>
+                            <select class="tw-select" id="subject" name="subject" required>
+                                <option value="">Select a topic</option>
+                                <option value="General Inquiry">General Inquiry</option>
+                                <option value="Technical Support">Technical Support</option>
+                                <option value="Feedback">Feedback</option>
+                                <option value="Partnership">Partnership</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="message">Message</label>
+                            <textarea class="tw-textarea" id="message" name="message" required placeholder="Write your message..."></textarea>
+                        </div>
+
+                        <div style="margin-top: 18px;">
+                            <button class="tw-btn tw-btn-primary" type="submit">Send email</button>
+                        </div>
+                    </form>
+
+                    <div id="successMessage" class="tw-prose" style="display:none; margin-top: 16px;">
+                        <p>Opening your email client…</p>
+                    </div>
+
+                    <div class="tw-links">
+                        <a href="/">Home</a> ·
+                        <a href="/privacy.html">Privacy</a> ·
+                        <a href="/terms.html">Terms</a> ·
+                        <a href="/guidelines.html">Guidelines</a> ·
+                        <a href="/credits.html">Credits</a>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const subject = formData.get('subject');
+            const message = formData.get('message');
+            
+            // Create mailto link
+            const mailtoLink = `mailto:andyblewett991@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
+            
+            // Open email client
+            window.location.href = mailtoLink;
+            
+            // Show success message
+            document.getElementById('successMessage').style.display = 'block';
+            
+            // Reset form
+            this.reset();
+            
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                document.getElementById('successMessage').style.display = 'none';
+            }, 5000);
+        });
+    </script>
+</body>
+</html>

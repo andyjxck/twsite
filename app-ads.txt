@@ -1,0 +1,10 @@
+# Town Wall App Ads.txt
+# This file will be populated with ad network information
+# For now, this is a placeholder file
+
+# Google Ad Manager
+# google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
+
+# Other ad networks will be added here as we integrate them
+
+# Last updated: January 31, 2024

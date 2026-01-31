@@ -1,0 +1,8 @@
+logo.png
+favicon.svg
+appstore-badge.svg
+googleplay-badge.svg
+screenshot-feed.svg
+screenshot-post.svg
+screenshot-chat.svg
+screenshot-businesses.svg
