@@ -26,7 +26,7 @@
     <div class="tw-bg">
         <div class="tw-shell">
             <div class="tw-container">
-                <section class="tw-hero">
+                <section class="tw-hero tw-reveal">
                     <div class="tw-brand">
                         <img src="/assets/logo.png" alt="Town Wall">
                         <span>Town Wall</span>
@@ -50,7 +50,7 @@
                     </div>
                 </section>
 
-                <section class="tw-section" id="features">
+                <section class="tw-section tw-reveal" id="features">
                     <h2 class="tw-section-title">A local network that doesn’t want your identity.</h2>
                     <p class="tw-subtitle">Town Wall is designed around a simple idea: you shouldn’t need to hand over a phone number or email address to talk to your neighbors.</p>
 
@@ -70,7 +70,7 @@
                     </div>
                 </section>
 
-                <section class="tw-section" id="tour">
+                <section class="tw-section tw-reveal" id="tour">
                     <h2 class="tw-section-title">What you can do on Town Wall.</h2>
                     <p class="tw-subtitle">Not a checklist — the basics done properly, with a local-first spine.</p>
 
@@ -126,9 +126,65 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="tw-tour">
+                        <div class="tw-tour-text">
+                            <div class="tw-kicker">Talent</div>
+                            <h3>Local creators deserve local discovery.</h3>
+                            <p>Town Wall includes dedicated Talent profiles so musicians, artists, photographers, and creators can be found without needing to fight the feed.</p>
+                            <p>Profiles support a bio, portfolio images, social links, and verification — built to turn “I saw your post” into “I booked you.”</p>
+                        </div>
+                        <div class="tw-tour-media">
+                            <div class="tw-media-frame">
+                                <img src="/assets/screenshot-post.svg" alt="Town Wall talent screenshot">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tw-tour">
+                        <div class="tw-tour-text">
+                            <div class="tw-kicker">Towny</div>
+                            <h3>Help, instantly — without digging through menus.</h3>
+                            <p>Meet Towny, the in-app assistant. Ask how features work, where to find things, or how to report something. Towny is there when you need clarity, fast.</p>
+                            <p>It’s designed for guidance and support — not fluff.</p>
+                        </div>
+                        <div class="tw-tour-media">
+                            <div class="tw-media-frame">
+                                <img src="/assets/screenshot-chat.svg" alt="Towny assistant screenshot">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tw-tour">
+                        <div class="tw-tour-text">
+                            <div class="tw-kicker">Calls</div>
+                            <h3>When a message isn’t enough, call.</h3>
+                            <p>Voice and video calls are built in — great for quickly coordinating a meet-up, checking details, or just having a real conversation.</p>
+                            <p>Controls are simple: mute, camera toggle, speaker, and call timer — with the same block/report controls you’d expect elsewhere.</p>
+                        </div>
+                        <div class="tw-tour-media">
+                            <div class="tw-media-frame">
+                                <img src="/assets/screenshot-chat.svg" alt="Town Wall calls screenshot">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tw-tour">
+                        <div class="tw-tour-text">
+                            <div class="tw-kicker">Polls</div>
+                            <h3>Let the community decide.</h3>
+                            <p>Polls make it easy to ask the neighborhood and get signal back — from “Which day works?” to “What should we build next?”</p>
+                            <p>Vote once, see results clearly, and keep decisions grounded in the people actually in your city and zone.</p>
+                        </div>
+                        <div class="tw-tour-media">
+                            <div class="tw-media-frame">
+                                <img src="/assets/screenshot-feed.svg" alt="Town Wall polls screenshot">
+                            </div>
+                        </div>
+                    </div>
                 </section>
 
-                <section class="tw-section" id="privacy">
+                <section class="tw-section tw-reveal" id="privacy">
                     <h2 class="tw-section-title">Privacy, clearly.</h2>
                     <p class="tw-subtitle">Town Wall is built around data minimization: collect less, leak less, stress less.</p>
                     <div class="tw-prose">
@@ -144,17 +200,34 @@
                     </div>
                 </section>
 
-                <section class="tw-section" id="download">
+                <section class="tw-section tw-reveal" id="download">
                     <h2 class="tw-section-title">Download Town Wall.</h2>
-                    <p class="tw-subtitle">iOS + Android. Store links will go live here when available.</p>
+                    <p class="tw-subtitle">iOS beta is available via TestFlight. For Android, request access and we’ll add you to testing.</p>
 
                     <div class="tw-actions">
                         <a class="tw-btn" href="https://testflight.apple.com/join/pDXYmMhf" target="_blank" rel="noopener noreferrer" aria-label="Join the iOS beta on TestFlight">
                             <img src="/assets/appstore-badge.svg" alt="App Store" style="height: 28px;">
                         </a>
-                        <a class="tw-btn" href="mailto:andyblewett991@gmail.com?subject=Town%20Wall%20Android%20Beta%20Request&body=Hi%20Town%20Wall%20team%2C%0A%0AI%27d%20like%20to%20join%20the%20Android%20beta.%0A%0ADevice%3A%20%0AGoogle%20account%20email%20for%20testing%3A%20%0A%0AThanks!" aria-label="Request access to the Android beta">
+                        <a class="tw-btn" href="#android-beta" aria-label="Request access to the Android beta">
                             <img src="/assets/googleplay-badge.svg" alt="Google Play" style="height: 28px;">
                         </a>
+                    </div>
+
+                    <div id="android-beta" class="tw-beta tw-reveal">
+                        <h3 class="tw-beta-title">Android beta request</h3>
+                        <p class="tw-beta-subtitle">Enter the Google account email you want added to testing.</p>
+
+                        <form class="tw-beta-form" name="android-beta" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                            <input type="hidden" name="form-name" value="android-beta">
+                            <p class="tw-hidden">
+                                <label>Don’t fill this out if you're human: <input name="bot-field"></label>
+                            </p>
+                            <div class="tw-beta-row">
+                                <input class="tw-input" type="email" name="email" placeholder="your.email@gmail.com" required autocomplete="email">
+                                <button class="tw-btn tw-btn-primary" type="submit">Request access</button>
+                            </div>
+                            <div class="tw-beta-status" aria-live="polite"></div>
+                        </form>
                     </div>
 
                     <div class="tw-links">
@@ -169,5 +242,47 @@
             </div>
         </div>
     </div>
+
+    <script>
+        (function () {
+            var revealNodes = Array.prototype.slice.call(document.querySelectorAll('.tw-reveal'));
+            if ('IntersectionObserver' in window) {
+                var io = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                            io.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.12 });
+                revealNodes.forEach(function (n) { io.observe(n); });
+            } else {
+                revealNodes.forEach(function (n) { n.classList.add('is-visible'); });
+            }
+
+            var form = document.querySelector('form[name="android-beta"]');
+            if (!form) return;
+            var status = form.querySelector('.tw-beta-status');
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                if (status) status.textContent = 'Sending…';
+
+                var formData = new FormData(form);
+                var body = new URLSearchParams(formData).toString();
+
+                fetch('/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: body
+                }).then(function () {
+                    if (status) status.textContent = 'Request received. We’ll email you if we need anything else.';
+                    form.reset();
+                }).catch(function () {
+                    if (status) status.textContent = 'Could not send right now. Please email andyblewett991@gmail.com.';
+                });
+            });
+        })();
+    </script>
 </body>
 </html>
