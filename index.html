@@ -23,7 +23,7 @@
     <script>
         document.documentElement.classList.add('tw-js');
     </script>
-    <link rel="stylesheet" href="/styles.css?v=e774b85">
+    <link rel="stylesheet" href="/styles.css?v=11d9b0e">
 </head>
 <body>
     <div class="tw-bg">
@@ -264,7 +264,7 @@
             }
 
             revealNodes.forEach(function (node, idx) {
-                node.style.setProperty('--tw-reveal-delay', clamp(idx * 80, 0, 220) + 'ms');
+                node.style.setProperty('--tw-reveal-delay', '0ms');
             });
 
             function revealNode(node) {
@@ -288,7 +288,7 @@
                             io.unobserve(entry.target);
                         }
                     });
-                }, { threshold: 0.18, rootMargin: '0px 0px -10% 0px' });
+                }, { threshold: 0.08, rootMargin: '0px 0px -5% 0px' });
                 revealNodes.forEach(function (n) { io.observe(n); });
             } else {
                 revealNodes.forEach(function (n) { revealNode(n); });
