@@ -184,32 +184,72 @@ body {
     margin-bottom: 8px;
 }
 
-/* POLLS SECTION */
-.polls-section {
+/* BACKGROUND SECTIONS */
+.bg-section {
     position: relative;
-    text-align: center;
-    padding: 120px 0;
+    padding: 100px 24px;
+    border-radius: 32px;
+    overflow: hidden;
+    margin: 40px 0;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.polls-bg {
+.bg-section-full {
+    min-height: 100vh;
+    border-radius: 0;
+    margin: 0 -24px;
+    width: calc(100% + 48px);
+}
+
+.bg-img {
     position: absolute;
     inset: 0;
     z-index: 0;
-    overflow: hidden;
-    border-radius: 32px;
 }
 
-.polls-bg img {
+.bg-img img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.25;
-    filter: blur(2px);
+    opacity: 0.35;
 }
 
-.polls-content {
+.bg-content {
     position: relative;
     z-index: 1;
+    text-align: center;
+    max-width: 600px;
+}
+
+.bg-content h3 {
+    font-size: 40px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+}
+
+.bg-content p {
+    font-size: 18px;
+    color: #a1a1a6;
+    margin-bottom: 8px;
+}
+
+/* MEDIA UNDER TEXT */
+.media-under {
+    max-width: 320px;
+    margin: 40px auto 0;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+}
+
+.media-under img {
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
 /* DOWNLOAD */
@@ -314,16 +354,120 @@ body {
     color: #f5f5f7;
 }
 
-/* FADE ANIMATION */
+/* FADE ANIMATIONS */
 .fade {
     opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    transform: translateY(60px);
+    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .fade.visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* Staggered children */
+.fade.visible .row-text h3,
+.fade.visible .bg-content h3 {
+    animation: wordReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.fade.visible .row-text p,
+.fade.visible .section-sub,
+.fade.visible .section-text,
+.fade.visible .bg-content p {
+    opacity: 0;
+    animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.fade.visible .row-text p:nth-child(2) { animation-delay: 0.1s; }
+.fade.visible .row-text p:nth-child(3) { animation-delay: 0.2s; }
+.fade.visible .row-text p:nth-child(4) { animation-delay: 0.3s; }
+.fade.visible .section-sub { animation-delay: 0.15s; }
+.fade.visible .section-text { animation-delay: 0.25s; }
+.fade.visible .bg-content p:nth-child(2) { animation-delay: 0.2s; }
+.fade.visible .bg-content p:nth-child(3) { animation-delay: 0.35s; }
+
+.fade.visible .media-portrait,
+.fade.visible .media-under {
+    opacity: 0;
+    animation: scaleIn 1s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
+}
+
+.fade.visible .bg-img img {
+    animation: zoomSlow 8s ease-out forwards;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes wordReveal {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+        filter: blur(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.92);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes zoomSlow {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.08);
+    }
+}
+
+/* Different section vibes */
+.section:nth-of-type(odd) .media-portrait {
+    animation-delay: 0s;
+}
+
+.section:nth-of-type(even) .media-portrait {
+    animation-delay: 0.15s;
+}
+
+.bg-section .bg-content h3 {
+    font-size: 56px;
+}
+
+/* Word-by-word reveal */
+.word-reveal .word {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: wordFade 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes wordFade {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* MOBILE */
@@ -360,17 +504,22 @@ body {
 
     <!-- FEED -->
     <section id="tour" class="section fade">
-        <div class="media-landscape">
-            <img src="/assets/screenshot-feed.png" alt="Town Wall Feed">
+        <div class="row">
+            <div class="media-portrait">
+                <img src="/assets/screenshot-feed.png" alt="Town Wall Feed">
+            </div>
+            <div class="row-text">
+                <h3>Feed</h3>
+                <p class="section-sub">Global → City → Zone</p>
+                <p>Start in the world, and end up in your neighbourhood (UK-only*).</p>
+                <p>No algorithms. Just local connection.</p>
+            </div>
         </div>
-        <h2 class="section-title">Feed</h2>
-        <p class="section-sub">Global → City → Zone</p>
-        <p class="section-text">Start in the world, and end up in your neighbourhood (UK-only*). No algorithms. Just local connection.</p>
     </section>
 
     <!-- POSTS -->
     <section class="section fade">
-        <div class="row">
+        <div class="row reverse">
             <div class="media-portrait">
                 <img src="/assets/screenshot-post.png" alt="Town Wall Posts">
             </div>
@@ -383,59 +532,73 @@ body {
         </div>
     </section>
 
-    <!-- TALENT & BUSINESS -->
+    <!-- TALENT -->
+    <section class="bg-section bg-section-full fade">
+        <div class="bg-img">
+            <img src="/assets/screenshot-talent.png" alt="">
+        </div>
+        <div class="bg-content">
+            <h3>Talent</h3>
+            <p>Local creators deserve local discovery.</p>
+            <p>Dedicated profiles for musicians, artists, and creators.</p>
+        </div>
+    </section>
+
+    <!-- BUSINESS -->
     <section class="section fade">
         <div class="row reverse">
             <div class="media-portrait">
-                <img src="/assets/screenshot-talent.png" alt="Town Wall Talent">
+                <img src="/assets/screenshot-businesses.png" alt="Town Wall Businesses">
             </div>
             <div class="row-text">
-                <h3>Talent &amp; Business</h3>
-                <p>Find talent and businesses nearby.</p>
-                <p>Browse creators or vendors.</p>
-                <p>Map &amp; List views with verification and human review.</p>
+                <h3>Business</h3>
+                <p>Find businesses nearby.</p>
+                <p>Browse vendors with map &amp; list views.</p>
+                <p>Verification and human review.</p>
             </div>
-        </div>
-        <div class="media-landscape">
-            <img src="/assets/screenshot-businesses.png" alt="Town Wall Businesses">
         </div>
     </section>
 
     <!-- CALLS -->
     <section class="section fade">
-        <div class="media-full">
-            <img src="/assets/screenshot-calls.png" alt="Town Wall Calls">
-        </div>
         <div class="row">
             <div class="media-portrait">
-                <img src="/assets/screenshot-calls-2.png" alt="Town Wall Calls">
+                <img src="/assets/screenshot-calls.png" alt="Town Wall Calls">
             </div>
             <div class="row-text">
                 <h3>Calls</h3>
-                <p>You can video call your friends, join a group or even just text with end to end encryption throughout the app.</p>
+                <p>Video call your friends, join a group, or just text.</p>
+                <p>End to end encryption throughout the app.</p>
             </div>
+        </div>
+        <div class="media-under">
+            <img src="/assets/screenshot-calls-2.png" alt="Town Wall Calls">
         </div>
     </section>
 
     <!-- TOWNY -->
-    <section class="section fade">
-        <h2 class="section-title">Towny</h2>
-        <p class="section-sub">Not just a help bot, but also a friend.</p>
-        <p class="section-text">Towny knows everything about the app, from the start to the end. Test him, or he can help if you need it.</p>
-        <div class="media-landscape">
-            <img src="/assets/screenshot-towny.png" alt="Towny AI Assistant">
+    <section class="bg-section bg-section-full fade">
+        <div class="bg-img">
+            <img src="/assets/screenshot-towny.png" alt="">
+        </div>
+        <div class="bg-content">
+            <h3>Towny</h3>
+            <p>Not just a help bot, but also a friend.</p>
+            <p>Towny knows everything about the app. Test him, or he can help if you need it.</p>
         </div>
     </section>
 
     <!-- POLLS -->
-    <section class="polls-section fade">
-        <div class="polls-bg">
-            <img src="/assets/screenshot-polls.png" alt="">
-        </div>
-        <div class="polls-content">
-            <h2 class="section-title">Polls</h2>
-            <p class="section-sub">You are the voice of Town Wall.</p>
-            <p class="section-text" style="margin: 0 auto;">Vote in polls or suggest your own to help shape the future of the new social network.</p>
+    <section class="section fade">
+        <div class="row reverse">
+            <div class="media-portrait">
+                <img src="/assets/screenshot-polls.png" alt="Town Wall Polls">
+            </div>
+            <div class="row-text">
+                <h3>Polls</h3>
+                <p>You are the voice of Town Wall.</p>
+                <p>Vote in polls or suggest your own to help shape the future of the new social network.</p>
+            </div>
         </div>
     </section>
 
@@ -476,9 +639,26 @@ const observer = new IntersectionObserver(entries => {
             observer.unobserve(entry.target);
         }
     });
-}, { threshold: 0.1 });
+}, { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
 
 document.querySelectorAll('.fade').forEach(el => observer.observe(el));
+
+// Word-by-word reveal for hero
+const heroDesc = document.querySelector('.hero-desc');
+const heroCta = document.querySelector('.hero-cta');
+
+function wrapWords(el) {
+    if (!el) return;
+    const text = el.textContent;
+    const words = text.split(' ');
+    el.innerHTML = words.map((word, i) => 
+        `<span class="word" style="animation-delay: ${i * 0.04}s">${word}</span>`
+    ).join(' ');
+    el.classList.add('word-reveal');
+}
+
+wrapWords(heroDesc);
+wrapWords(heroCta);
 
 const form = document.querySelector('form[name="android-beta"]');
 const status = document.querySelector('.form-status');
