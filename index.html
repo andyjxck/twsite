@@ -7,107 +7,160 @@
 
 <meta name="description" content="Town Wall is the hyper-local community app built for the UK — organized by City → Zone.">
 <link rel="canonical" href="https://townwall.co.uk/">
+<link rel="icon" type="image/png" href="/assets/favicon.png">
 
 <style>
-/* -------------------------
-   RESET + BASE
--------------------------- */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", Inter, system-ui, sans-serif;
-    background: #0b0b0d;
+    background: #000;
     color: #f5f5f7;
-    line-height: 1.45;
+    line-height: 1.5;
 }
 
-/* -------------------------
-   LAYOUT
--------------------------- */
 .page {
-    max-width: 1200px;
+    max-width: 1100px;
     margin: 0 auto;
-    padding: 96px 24px;
+    padding: 80px 24px;
 }
 
+/* HERO */
 .hero {
     text-align: center;
-    padding-bottom: 120px;
+    padding: 60px 0 100px;
 }
 
-.hero img {
-    width: 64px;
-    height: 64px;
-    margin-bottom: 24px;
+.hero-logo {
+    width: 72px;
+    height: 72px;
+    margin-bottom: 32px;
 }
 
 .hero h1 {
-    font-size: clamp(40px, 6vw, 72px);
+    font-size: clamp(48px, 8vw, 80px);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    margin-bottom: 8px;
+}
+
+.hero-tagline {
+    font-size: clamp(24px, 4vw, 36px);
+    font-weight: 600;
+    color: #86868b;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+}
+
+.hero-sub {
+    font-size: clamp(18px, 2.5vw, 22px);
+    font-weight: 500;
+    color: #a1a1a6;
+    margin-bottom: 32px;
+}
+
+.hero-desc {
+    max-width: 680px;
+    margin: 0 auto 16px;
+    font-size: 17px;
+    color: #86868b;
+    line-height: 1.6;
+}
+
+.hero-cta {
+    font-size: 17px;
+    color: #f5f5f7;
+    font-weight: 500;
+    margin-bottom: 40px;
+}
+
+.hero-link {
+    display: inline-block;
+    margin-top: 24px;
+    color: #2997ff;
+    font-size: 18px;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.hero-link:hover {
+    text-decoration: underline;
+}
+
+/* SECTIONS */
+.section {
+    padding: 100px 0;
+    position: relative;
+}
+
+.section-title {
+    font-size: clamp(32px, 5vw, 48px);
     font-weight: 700;
     letter-spacing: -0.02em;
-    margin-bottom: 24px;
+    margin-bottom: 12px;
 }
 
-.hero p {
-    max-width: 640px;
-    margin: 0 auto 40px;
+.section-sub {
     font-size: 18px;
+    color: #86868b;
+    margin-bottom: 8px;
+}
+
+.section-text {
+    font-size: 17px;
     color: #a1a1a6;
+    max-width: 560px;
 }
 
-.actions {
-    display: flex;
-    justify-content: center;
-    gap: 16px;
-    flex-wrap: wrap;
+/* MEDIA FRAMES */
+.media-landscape {
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 40px 0;
 }
 
-.btn {
-    padding: 12px 22px;
-    border-radius: 999px;
-    text-decoration: none;
-    font-weight: 500;
-    border: 1px solid #2c2c2e;
-    color: #f5f5f7;
+.media-landscape img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    aspect-ratio: 16 / 9;
 }
 
-.btn.primary {
-    background: #007aff;
-    border-color: #007aff;
+.media-portrait {
+    max-width: 320px;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.6);
 }
 
-/* -------------------------
-   SECTIONS
--------------------------- */
-.section {
-    padding: 120px 0;
+.media-portrait img {
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
-.section-header {
-    max-width: 520px;
-    margin-bottom: 64px;
+.media-full {
+    width: 100%;
+    border-radius: 24px;
+    overflow: hidden;
+    margin: 40px 0;
 }
 
-.section-header h2 {
-    font-size: 40px;
-    letter-spacing: -0.02em;
-    margin-bottom: 16px;
+.media-full img {
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
-.section-header p {
-    color: #a1a1a6;
-    font-size: 18px;
-}
-
-/* -------------------------
-   FEATURE ROWS
--------------------------- */
+/* ROW LAYOUTS */
 .row {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 80px;
+    gap: 60px;
     align-items: center;
-    margin-bottom: 140px;
 }
 
 .row.reverse {
@@ -118,61 +171,136 @@ body {
     direction: ltr;
 }
 
-.text h3 {
-    font-size: 32px;
+.row-text h3 {
+    font-size: 28px;
+    font-weight: 600;
     letter-spacing: -0.02em;
-    margin-bottom: 16px;
-}
-
-.text p {
-    color: #a1a1a6;
-    font-size: 17px;
     margin-bottom: 12px;
 }
 
-.media img {
-    width: 100%;
-    border-radius: 24px;
-    box-shadow:
-        0 20px 60px rgba(0,0,0,0.5),
-        inset 0 0 0 1px rgba(255,255,255,0.06);
+.row-text p {
+    font-size: 17px;
+    color: #86868b;
+    margin-bottom: 8px;
 }
 
-/* -------------------------
-   LANDSCAPE SECTIONS
--------------------------- */
-.landscape {
-    margin: 160px 0;
+/* POLLS SECTION */
+.polls-section {
+    position: relative;
+    text-align: center;
+    padding: 120px 0;
 }
 
-.landscape img {
-    width: 100%;
+.polls-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
     border-radius: 32px;
 }
 
-/* -------------------------
-   IOS-STYLE FADE
--------------------------- */
-.fade {
-    opacity: 0;
-    transform: translateY(30px);
-    transition:
-        opacity 0.9s cubic-bezier(.4,0,.2,1),
-        transform 0.9s cubic-bezier(.4,0,.2,1);
+.polls-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.25;
+    filter: blur(2px);
 }
 
-.fade.visible {
-    opacity: 1;
-    transform: translateY(0);
+.polls-content {
+    position: relative;
+    z-index: 1;
 }
 
-/* -------------------------
-   FOOTER
--------------------------- */
+/* DOWNLOAD */
+.download {
+    text-align: center;
+    padding: 100px 0;
+}
+
+.download h2 {
+    font-size: clamp(36px, 5vw, 56px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+}
+
+.download-sub {
+    font-size: 20px;
+    color: #86868b;
+    margin-bottom: 40px;
+}
+
+.badges {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+}
+
+.badges img {
+    height: 52px;
+    width: auto;
+}
+
+.badges a {
+    display: block;
+}
+
+.android-form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.android-form p {
+    font-size: 15px;
+    color: #86868b;
+    margin-bottom: 12px;
+}
+
+.android-form input[type="email"] {
+    width: 100%;
+    padding: 14px 18px;
+    border-radius: 12px;
+    border: 1px solid #3a3a3c;
+    background: #1c1c1e;
+    color: #f5f5f7;
+    font-size: 16px;
+    margin-bottom: 12px;
+}
+
+.android-form input[type="email"]::placeholder {
+    color: #6e6e73;
+}
+
+.android-form button {
+    width: 100%;
+    padding: 14px 18px;
+    border-radius: 12px;
+    border: none;
+    background: #2997ff;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.android-form button:hover {
+    background: #0077ed;
+}
+
+.form-status {
+    margin-top: 12px;
+    font-size: 14px;
+    color: #86868b;
+}
+
+/* FOOTER */
 .footer {
     text-align: center;
-    padding-top: 120px;
-    padding-bottom: 40px;
+    padding: 60px 0 40px;
     color: #6e6e73;
     font-size: 14px;
 }
@@ -180,20 +308,36 @@ body {
 .footer a {
     color: #6e6e73;
     text-decoration: none;
-    transition: color 0.2s;
 }
 
 .footer a:hover {
-    color: #fff;
+    color: #f5f5f7;
 }
 
-/* -------------------------
-   MOBILE
--------------------------- */
-@media (max-width: 900px) {
+/* FADE ANIMATION */
+.fade {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
     .row {
         grid-template-columns: 1fr;
-        gap: 40px;
+        gap: 32px;
+    }
+    .row.reverse {
+        direction: ltr;
+    }
+    .media-portrait {
+        max-width: 280px;
+        margin: 0 auto;
     }
 }
 </style>
@@ -205,91 +349,121 @@ body {
 
     <!-- HERO -->
     <section class="hero fade">
-        <img src="/assets/logo.png" alt="Town Wall">
-        <h1>Your city.<br>Your zone.<br>Your people.</h1>
-        <p>Town Wall is the hyper-local community app for the UK — designed so you see what matters where you live.</p>
-
-        <div class="actions">
-            <a class="btn primary" href="#download">Get Town Wall</a>
-            <a class="btn" href="#tour">See the tour</a>
-        </div>
+        <img class="hero-logo" src="/assets/logo.png" alt="Town Wall">
+        <h1>Town Wall</h1>
+        <p class="hero-tagline">Private. Local.</p>
+        <p class="hero-sub">Built for &amp; by you.</p>
+        <p class="hero-desc">Town Wall is a hyper-local community app for the UK — with integration for a global chat for anyone outside of the UK.</p>
+        <p class="hero-cta">It's time to stop letting billionaires take your data and sell it to everybody they know. Take control. Jump the wall.</p>
+        <a class="hero-link" href="#tour">See tour ↓</a>
     </section>
 
     <!-- FEED -->
-    <section id="tour" class="section">
-        <div class="row fade">
-            <div class="text">
-                <h3>Global → City → Zone</h3>
-                <p>Zoom out to see everything, or narrow down to your street.</p>
-                <p>No rage-bait. No algorithm games.</p>
+    <section id="tour" class="section fade">
+        <div class="media-landscape">
+            <img src="/assets/screenshot-feed.png" alt="Town Wall Feed">
+        </div>
+        <h2 class="section-title">Feed</h2>
+        <p class="section-sub">Global → City → Zone</p>
+        <p class="section-text">Start in the world, and end up in your neighbourhood (UK-only*). No algorithms. Just local connection.</p>
+    </section>
+
+    <!-- POSTS -->
+    <section class="section fade">
+        <div class="row">
+            <div class="media-portrait">
+                <img src="/assets/screenshot-post.png" alt="Town Wall Posts">
             </div>
-            <div class="media">
-                <img src="/assets/screenshot-feed.png" alt="">
+            <div class="row-text">
+                <h3>Posts</h3>
+                <p>Posting that feels natural.</p>
+                <p>Regular or anonymous posts, polls and media.</p>
+                <p>Choose a zone. Keep it human.</p>
             </div>
         </div>
+    </section>
 
-        <!-- POSTING -->
-        <div class="row reverse fade">
-            <div class="text">
-                <h3>Posting that feels natural</h3>
-                <p>Regular posts, anonymous posts, polls, and media.</p>
-                <p>Choose your zone and keep it human.</p>
+    <!-- TALENT & BUSINESS -->
+    <section class="section fade">
+        <div class="row reverse">
+            <div class="media-portrait">
+                <img src="/assets/screenshot-talent.png" alt="Town Wall Talent">
             </div>
-            <div class="media">
-                <img src="/assets/screenshot-post.png" alt="">
+            <div class="row-text">
+                <h3>Talent &amp; Business</h3>
+                <p>Find talent and businesses nearby.</p>
+                <p>Browse creators or vendors.</p>
+                <p>Map &amp; List views with verification and human review.</p>
             </div>
         </div>
-
-        <!-- CHAT LANDSCAPE -->
-        <div class="landscape fade">
-            <img src="/assets/screenshot-chat.png" alt="">
+        <div class="media-landscape">
+            <img src="/assets/screenshot-businesses.png" alt="Town Wall Businesses">
         </div>
+    </section>
 
-        <!-- DISCOVERY -->
-        <div class="row fade">
-            <div class="text">
-                <h3>Find businesses nearby</h3>
-                <p>Browse local businesses and creators.</p>
-                <p>Map + list views with verification.</p>
-            </div>
-            <div class="media">
-                <img src="/assets/screenshot-businesses.png" alt="">
-            </div>
+    <!-- CALLS -->
+    <section class="section fade">
+        <div class="media-full">
+            <img src="/assets/screenshot-calls.png" alt="Town Wall Calls">
         </div>
-
-        <!-- TALENT -->
-        <div class="row reverse fade">
-            <div class="text">
-                <h3>Talent deserves discovery</h3>
-                <p>Dedicated profiles for musicians, artists, and creators.</p>
-                <p>Turn “I saw your post” into “I booked you.”</p>
+        <div class="row">
+            <div class="media-portrait">
+                <img src="/assets/screenshot-calls-2.png" alt="Town Wall Calls">
             </div>
-            <div class="media">
-                <img src="/assets/screenshot-talent.png" alt="">
+            <div class="row-text">
+                <h3>Calls</h3>
+                <p>You can video call your friends, join a group or even just text with end to end encryption throughout the app.</p>
             </div>
         </div>
+    </section>
 
-        <!-- CALLS LANDSCAPE -->
-        <div class="landscape fade">
-            <img src="/assets/screenshot-calls.png" alt="">
+    <!-- TOWNY -->
+    <section class="section fade">
+        <h2 class="section-title">Towny</h2>
+        <p class="section-sub">Not just a help bot, but also a friend.</p>
+        <p class="section-text">Towny knows everything about the app, from the start to the end. Test him, or he can help if you need it.</p>
+        <div class="media-landscape">
+            <img src="/assets/screenshot-towny.png" alt="Towny AI Assistant">
+        </div>
+    </section>
+
+    <!-- POLLS -->
+    <section class="polls-section fade">
+        <div class="polls-bg">
+            <img src="/assets/screenshot-polls.png" alt="">
+        </div>
+        <div class="polls-content">
+            <h2 class="section-title">Polls</h2>
+            <p class="section-sub">You are the voice of Town Wall.</p>
+            <p class="section-text" style="margin: 0 auto;">Vote in polls or suggest your own to help shape the future of the new social network.</p>
         </div>
     </section>
 
     <!-- DOWNLOAD -->
-    <section id="download" class="section fade">
-        <div class="section-header">
-            <h2>Download Town Wall</h2>
-            <p>Available on iOS via TestFlight. Android testing coming soon.</p>
+    <section id="download" class="download fade">
+        <h2>Download Town Wall</h2>
+        <p class="download-sub">In beta now</p>
+
+        <div class="badges">
+            <a href="https://testflight.apple.com/join/pDXYmMhf">
+                <img src="/assets/appstore-badge.png" alt="Download on the App Store">
+            </a>
         </div>
 
-        <div class="actions">
-            <a class="btn" href="https://testflight.apple.com/join/pDXYmMhf">iOS TestFlight</a>
-            <a class="btn" href="/contact.html">Android access</a>
+        <div class="android-form">
+            <p>Android beta coming soon — leave your email:</p>
+            <form name="android-beta" method="POST" data-netlify="true">
+                <input type="hidden" name="form-name" value="android-beta">
+                <input type="email" name="email" placeholder="you@email.com" required>
+                <button type="submit">Request Android Access</button>
+            </form>
+            <p class="form-status"></p>
         </div>
     </section>
 
+    <!-- FOOTER -->
     <div class="footer">
-        &copy; Town Wall &middot; <a href="/privacy.html">Privacy</a> &middot; <a href="/terms.html">Terms</a> &middot; <a href="/guidelines.html">Guidelines</a> &middot; <a href="/contact.html">Contact</a>
+        © Town Wall · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="/guidelines.html">Guidelines</a> · <a href="/contact.html">Contact</a>
     </div>
 
 </div>
@@ -302,9 +476,29 @@ const observer = new IntersectionObserver(entries => {
             observer.unobserve(entry.target);
         }
     });
-}, { threshold: 0.15 });
+}, { threshold: 0.1 });
 
 document.querySelectorAll('.fade').forEach(el => observer.observe(el));
+
+const form = document.querySelector('form[name="android-beta"]');
+const status = document.querySelector('.form-status');
+if (form) {
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        status.textContent = 'Sending...';
+        const data = new FormData(form);
+        fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams(data).toString()
+        }).then(() => {
+            status.textContent = 'Thanks! We\'ll email you when Android is ready.';
+            form.reset();
+        }).catch(() => {
+            status.textContent = 'Something went wrong. Try again later.';
+        });
+    });
+}
 </script>
 
 </body>
