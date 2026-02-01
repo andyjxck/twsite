@@ -1,348 +1,300 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Town Wall</title>
-    <meta name="description" content="Town Wall is the hyper-local community app built for the UK — organized by City → Zone so you see what matters where you live.">
-    <link rel="canonical" href="https://townwall.co.uk/">
-    <meta name="application-name" content="Town Wall">
-    <meta name="theme-color" content="#000000">
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Town Wall">
-    <meta property="og:title" content="Town Wall">
-    <meta property="og:description" content="A hyper-local community app for the UK, organized by City → Zone.">
-    <meta property="og:url" content="https://townwall.co.uk/">
-    <meta property="og:image" content="https://townwall.co.uk/assets/logo.png">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Town Wall">
-    <meta name="twitter:description" content="A hyper-local community app for the UK, organized by City → Zone.">
-    <meta name="twitter:image" content="https://townwall.co.uk/assets/logo.png">
-    <link rel="icon" type="image/png" href="/assets/favicon.png">
-    <link rel="apple-touch-icon" href="/assets/logo.png">
-    <script>
-        document.documentElement.classList.add('tw-js');
-    </script>
-    <link rel="stylesheet" href="/styles.css?v=11d9b0e">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Town Wall</title>
+
+<meta name="description" content="Town Wall is the hyper-local community app built for the UK — organized by City → Zone.">
+<link rel="canonical" href="https://townwall.co.uk/">
+
+<style>
+/* -------------------------
+   RESET + BASE
+-------------------------- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", Inter, system-ui, sans-serif;
+    background: #0b0b0d;
+    color: #f5f5f7;
+    line-height: 1.45;
+}
+
+/* -------------------------
+   LAYOUT
+-------------------------- */
+.page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 96px 24px;
+}
+
+.hero {
+    text-align: center;
+    padding-bottom: 120px;
+}
+
+.hero img {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 24px;
+}
+
+.hero h1 {
+    font-size: clamp(40px, 6vw, 72px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+}
+
+.hero p {
+    max-width: 640px;
+    margin: 0 auto 40px;
+    font-size: 18px;
+    color: #a1a1a6;
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 12px 22px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 500;
+    border: 1px solid #2c2c2e;
+    color: #f5f5f7;
+}
+
+.btn.primary {
+    background: #007aff;
+    border-color: #007aff;
+}
+
+/* -------------------------
+   SECTIONS
+-------------------------- */
+.section {
+    padding: 120px 0;
+}
+
+.section-header {
+    max-width: 520px;
+    margin-bottom: 64px;
+}
+
+.section-header h2 {
+    font-size: 40px;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+}
+
+.section-header p {
+    color: #a1a1a6;
+    font-size: 18px;
+}
+
+/* -------------------------
+   FEATURE ROWS
+-------------------------- */
+.row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    margin-bottom: 140px;
+}
+
+.row.reverse {
+    direction: rtl;
+}
+
+.row.reverse > * {
+    direction: ltr;
+}
+
+.text h3 {
+    font-size: 32px;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+}
+
+.text p {
+    color: #a1a1a6;
+    font-size: 17px;
+    margin-bottom: 12px;
+}
+
+.media img {
+    width: 100%;
+    border-radius: 24px;
+    box-shadow:
+        0 20px 60px rgba(0,0,0,0.5),
+        inset 0 0 0 1px rgba(255,255,255,0.06);
+}
+
+/* -------------------------
+   LANDSCAPE SECTIONS
+-------------------------- */
+.landscape {
+    margin: 160px 0;
+}
+
+.landscape img {
+    width: 100%;
+    border-radius: 32px;
+}
+
+/* -------------------------
+   IOS-STYLE FADE
+-------------------------- */
+.fade {
+    opacity: 0;
+    transform: translateY(30px);
+    transition:
+        opacity 0.9s cubic-bezier(.4,0,.2,1),
+        transform 0.9s cubic-bezier(.4,0,.2,1);
+}
+
+.fade.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* -------------------------
+   FOOTER
+-------------------------- */
+.footer {
+    text-align: center;
+    padding-top: 120px;
+    color: #6e6e73;
+    font-size: 14px;
+}
+
+/* -------------------------
+   MOBILE
+-------------------------- */
+@media (max-width: 900px) {
+    .row {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
+</style>
 </head>
+
 <body>
-    <div class="tw-bg">
-        <div class="tw-shell">
-            <div class="tw-container">
-                <section class="tw-hero tw-reveal">
-                    <div class="tw-brand">
-                        <img src="/assets/logo.png" alt="Town Wall">
-                        <span>Town Wall</span>
-                    </div>
-                    <h1>Your city.
-                        <br>
-                        Your zone.
-                        <br>
-                        Your people.
-                    </h1>
-                    <p>Town Wall is the hyper-local community app built for the UK — organized by City → Zone so you stop scrolling “content” and start seeing your area.</p>
 
-                    <div class="tw-actions">
-                        <a class="tw-btn tw-btn-primary" href="#download">Get Town Wall</a>
-                        <a class="tw-btn" href="#tour">See the tour</a>
-                        <a class="tw-btn" href="#privacy">Privacy</a>
-                        <a class="tw-btn" href="/contact.html">Support</a>
-                    </div>
-                    <div class="tw-links">
-                        No phone number required · No email required · UK-only · 18+ onboarding
-                    </div>
-                </section>
+<div class="page">
 
-                <section class="tw-section tw-reveal tw-section-alt" id="features">
-                    <h2 class="tw-section-title">A local network that doesn’t want your identity.</h2>
-                    <p class="tw-subtitle">Town Wall is designed around a simple idea: you shouldn’t need to hand over a phone number or email address to talk to your neighbors.</p>
+    <!-- HERO -->
+    <section class="hero fade">
+        <img src="/assets/logo.png" alt="Town Wall">
+        <h1>Your city.<br>Your zone.<br>Your people.</h1>
+        <p>Town Wall is the hyper-local community app for the UK — designed so you see what matters where you live.</p>
 
-                    <div class="tw-grid">
-                        <div class="tw-feature">
-                            <h3>Local-first signal</h3>
-                            <p>City → Zone structure means you see what’s happening near you, not what the algorithm thinks will keep you angry.</p>
-                        </div>
-                        <div class="tw-feature">
-                            <h3>Account with a username</h3>
-                            <p>Sign up with a username + password. No phone number required. No email required.</p>
-                        </div>
-                        <div class="tw-feature">
-                            <h3>Built for trust</h3>
-                            <p>Block and report tools are first-class. Abuse gets removed and reports are reviewed quickly.</p>
-                        </div>
-                    </div>
-                </section>
+        <div class="actions">
+            <a class="btn primary" href="#download">Get Town Wall</a>
+            <a class="btn" href="#tour">See the tour</a>
+        </div>
+    </section>
 
-                <section class="tw-section tw-reveal" id="tour">
-                    <h2 class="tw-section-title">What you can do on Town Wall.</h2>
-                    <p class="tw-subtitle">Not a checklist — the basics done properly, with a local-first spine.</p>
-                </section>
-
-                <section class="tw-tour tw-reveal tw-accent-indigo">
-                        <div class="tw-tour-text">
-                            <div class="tw-kicker">Feed</div>
-                            <h3>Global → City → Zone.</h3>
-                            <p>See posts from everywhere, narrow to your city, or go fully local to your neighborhood zone.</p>
-                            <p>React, reply, save, share — without the noise.</p>
-                        </div>
-                        <div class="tw-tour-media">
-                            <div class="tw-media-frame tw-frame-landscape">
-                                <img src="/assets/screenshot-feed.png" alt="Town Wall feed screenshot">
-                            </div>
-                        </div>
-                </section>
-
-                <section class="tw-tour tw-reveal tw-accent-emerald">
-                        <div class="tw-tour-text">
-                            <div class="tw-kicker">Posting</div>
-                            <h3>Post types that feel native to the town square.</h3>
-                            <p>Regular posts, anonymous posts, polls, and media. Choose your zone. Keep it simple.</p>
-                        </div>
-                        <div class="tw-tour-media">
-                            <div class="tw-media-frame">
-                                <img src="/assets/screenshot-post.png" alt="Town Wall post screenshot">
-                            </div>
-                        </div>
-                </section>
-
-                <section class="tw-tour tw-reveal tw-accent-pink">
-                        <div class="tw-tour-text">
-                            <div class="tw-kicker">Chat</div>
-                            <h3>Messaging that respects boundaries.</h3>
-                            <p>DMs, group chats, and chat requests — plus voice/video calls when you need to talk properly.</p>
-                        </div>
-                        <div class="tw-tour-media">
-                            <div class="tw-media-frame tw-frame-landscape">
-                                <img src="/assets/screenshot-chat.png" alt="Town Wall chat screenshot">
-                            </div>
-                        </div>
-                </section>
-
-                <section class="tw-tour tw-reveal tw-accent-amber">
-                        <div class="tw-tour-text">
-                            <div class="tw-kicker">Discovery</div>
-                            <h3>Find businesses and talent nearby.</h3>
-                            <p>Browse local businesses and creators. Map + list views, categories, and verification.</p>
-                        </div>
-                        <div class="tw-tour-media">
-                            <div class="tw-media-frame">
-                                <img src="/assets/screenshot-businesses.png" alt="Town Wall businesses screenshot">
-                            </div>
-                        </div>
-                </section>
-
-                <section class="tw-tour tw-reveal tw-accent-cyan">
-                        <div class="tw-tour-text">
-                            <div class="tw-kicker">Talent</div>
-                            <h3>Local creators deserve local discovery.</h3>
-                            <p>Town Wall includes dedicated Talent profiles so musicians, artists, photographers, and creators can be found without needing to fight the feed.</p>
-                            <p>Profiles support a bio, portfolio images, social links, and verification — built to turn “I saw your post” into “I booked you.”</p>
-                        </div>
-                        <div class="tw-tour-media">
-                            <div class="tw-media-frame tw-frame-landscape">
-                                <img src="/assets/screenshot-talent.png" alt="Town Wall talent screenshot">
-                            </div>
-                        </div>
-                </section>
-
-                <section class="tw-tour tw-reveal tw-accent-violet">
-                        <div class="tw-tour-text">
-                            <div class="tw-kicker">Towny</div>
-                            <h3>Help, instantly — without digging through menus.</h3>
-                            <p>Meet Towny, the in-app assistant. Ask how features work, where to find things, or how to report something. Towny is there when you need clarity, fast.</p>
-                            <p>It’s designed for guidance and support — not fluff.</p>
-                        </div>
-                        <div class="tw-tour-media">
-                            <div class="tw-media-frame">
-                                <img src="/assets/screenshot-towny.png" alt="Towny assistant screenshot">
-                            </div>
-                        </div>
-                </section>
-
-                <section class="tw-tour tw-reveal tw-accent-rose">
-                        <div class="tw-tour-text">
-                            <div class="tw-kicker">Calls</div>
-                            <h3>When a message isn’t enough, call.</h3>
-                            <p>Voice and video calls are built in — great for quickly coordinating a meet-up, checking details, or just having a real conversation.</p>
-                            <p>Controls are simple: mute, camera toggle, speaker, and call timer — with the same block/report controls you’d expect elsewhere.</p>
-                        </div>
-                        <div class="tw-tour-media">
-                            <div class="tw-media-frame tw-frame-landscape">
-                                <img src="/assets/screenshot-calls.png" alt="Town Wall calls screenshot">
-                            </div>
-                        </div>
-                </section>
-
-                <section class="tw-tour tw-reveal tw-accent-teal">
-                        <div class="tw-tour-text">
-                            <div class="tw-kicker">Polls</div>
-                            <h3>Let the community decide.</h3>
-                            <p>Polls make it easy to ask the neighborhood and get signal back — from “Which day works?” to “What should we build next?”</p>
-                            <p>Vote once, see results clearly, and keep decisions grounded in the people actually in your city and zone.</p>
-                        </div>
-                        <div class="tw-tour-media">
-                            <div class="tw-media-frame">
-                                <img src="/assets/screenshot-polls.png" alt="Town Wall polls screenshot">
-                            </div>
-                        </div>
-                </section>
-
-                <section class="tw-section tw-reveal tw-section-alt" id="privacy">
-                    <h2 class="tw-section-title">Privacy, clearly.</h2>
-                    <p class="tw-subtitle">Town Wall is built around data minimization: collect less, leak less, stress less.</p>
-                    <div class="tw-prose">
-                        <p><strong>No phone number required.</strong> You can use Town Wall without linking your SIM to your identity.</p>
-                        <p><strong>No email required.</strong> Your account is based on a username + password.</p>
-                        <p><strong>Anonymous posting option.</strong> When you post anonymously, your username isn’t shown publicly.</p>
-                        <p><strong>End-to-end encryption.</strong> Messages may be encrypted end-to-end, meaning we cannot read the content of encrypted messages. However, metadata (sender, recipient, timestamp) is stored.</p>
-                    </div>
-                    <div class="tw-links">
-                        <a href="/privacy.html">Privacy Policy</a> ·
-                        <a href="/terms.html">Terms</a> ·
-                        <a href="/guidelines.html">Guidelines</a>
-                    </div>
-                </section>
-
-                <section class="tw-section tw-reveal" id="download">
-                    <h2 class="tw-section-title">Download Town Wall.</h2>
-                    <p class="tw-subtitle">iOS beta is available via TestFlight. For Android, request access and we’ll add you to testing.</p>
-
-                    <div class="tw-actions">
-                        <a class="tw-btn" href="https://testflight.apple.com/join/pDXYmMhf" target="_blank" rel="noopener noreferrer" aria-label="Join the iOS beta on TestFlight">
-                            <img src="/assets/appstore-badge.png" alt="App Store" style="height: 28px;">
-                        </a>
-                        <a class="tw-btn" href="#android-beta" aria-label="Request access to the Android beta">
-                            <img src="/assets/googleplay-badge.png" alt="Google Play" style="height: 28px;">
-                        </a>
-                    </div>
-
-                    <div id="android-beta" class="tw-beta">
-                        <h3 class="tw-beta-title">Android beta request</h3>
-                        <p class="tw-beta-subtitle">Enter the Google account email you want added to testing.</p>
-
-                        <form class="tw-beta-form" name="android-beta" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-                            <input type="hidden" name="form-name" value="android-beta">
-                            <p class="tw-hidden">
-                                <label>Don’t fill this out if you're human: <input name="bot-field"></label>
-                            </p>
-                            <div class="tw-beta-row">
-                                <input class="tw-input" type="email" name="email" placeholder="your.email@gmail.com" required autocomplete="email">
-                                <button class="tw-btn tw-btn-primary" type="submit">Request access</button>
-                            </div>
-                            <div class="tw-beta-status" aria-live="polite"></div>
-                        </form>
-                    </div>
-
-                    <div class="tw-links">
-                        <a href="/contact.html">Support</a> ·
-                        <a href="/privacy.html">Privacy</a> ·
-                        <a href="/terms.html">Terms</a> ·
-                        <a href="/guidelines.html">Guidelines</a> ·
-                        <a href="/credits.html">Credits</a> ·
-                        <a href="/app-ads.txt">app-ads.txt</a>
-                    </div>
-                </section>
+    <!-- FEED -->
+    <section id="tour" class="section">
+        <div class="row fade">
+            <div class="text">
+                <h3>Global → City → Zone</h3>
+                <p>Zoom out to see everything, or narrow down to your street.</p>
+                <p>No rage-bait. No algorithm games.</p>
+            </div>
+            <div class="media">
+                <img src="/assets/screenshot-feed.png" alt="">
             </div>
         </div>
+
+        <!-- POSTING -->
+        <div class="row reverse fade">
+            <div class="text">
+                <h3>Posting that feels natural</h3>
+                <p>Regular posts, anonymous posts, polls, and media.</p>
+                <p>Choose your zone and keep it human.</p>
+            </div>
+            <div class="media">
+                <img src="/assets/screenshot-post.png" alt="">
+            </div>
+        </div>
+
+        <!-- CHAT LANDSCAPE -->
+        <div class="landscape fade">
+            <img src="/assets/screenshot-chat.png" alt="">
+        </div>
+
+        <!-- DISCOVERY -->
+        <div class="row fade">
+            <div class="text">
+                <h3>Find businesses nearby</h3>
+                <p>Browse local businesses and creators.</p>
+                <p>Map + list views with verification.</p>
+            </div>
+            <div class="media">
+                <img src="/assets/screenshot-businesses.png" alt="">
+            </div>
+        </div>
+
+        <!-- TALENT -->
+        <div class="row reverse fade">
+            <div class="text">
+                <h3>Talent deserves discovery</h3>
+                <p>Dedicated profiles for musicians, artists, and creators.</p>
+                <p>Turn “I saw your post” into “I booked you.”</p>
+            </div>
+            <div class="media">
+                <img src="/assets/screenshot-talent.png" alt="">
+            </div>
+        </div>
+
+        <!-- CALLS LANDSCAPE -->
+        <div class="landscape fade">
+            <img src="/assets/screenshot-calls.png" alt="">
+        </div>
+    </section>
+
+    <!-- DOWNLOAD -->
+    <section id="download" class="section fade">
+        <div class="section-header">
+            <h2>Download Town Wall</h2>
+            <p>Available on iOS via TestFlight. Android testing coming soon.</p>
+        </div>
+
+        <div class="actions">
+            <a class="btn" href="https://testflight.apple.com/join/pDXYmMhf">iOS TestFlight</a>
+            <a class="btn" href="/contact.html">Android access</a>
+        </div>
+    </section>
+
+    <div class="footer">
+        © Town Wall · Privacy · Terms · Guidelines
     </div>
 
-    <script>
-        (function () {
-            try {
-                document.documentElement.classList.add('tw-anim');
-            } catch (e) {}
+</div>
 
-            var prefersReducedMotion = false;
-            try {
-                prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-            } catch (e) {}
+<script>
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.15 });
 
-            var revealNodes = Array.prototype.slice.call(document.querySelectorAll('.tw-hero.tw-reveal, .tw-section.tw-reveal, .tw-tour.tw-reveal'));
+document.querySelectorAll('.fade').forEach(el => observer.observe(el));
+</script>
 
-            function clamp(n, min, max) {
-                return Math.max(min, Math.min(max, n));
-            }
-
-            revealNodes.forEach(function (node, idx) {
-                node.style.setProperty('--tw-reveal-delay', '0ms');
-            });
-
-            function revealNode(node) {
-                if (!node) return;
-                if (prefersReducedMotion) {
-                    node.classList.add('is-visible');
-                    return;
-                }
-                requestAnimationFrame(function () {
-                    setTimeout(function () {
-                        node.classList.add('is-visible');
-                    }, 30);
-                });
-            }
-
-            if ('IntersectionObserver' in window) {
-                var io = new IntersectionObserver(function (entries) {
-                    entries.forEach(function (entry) {
-                        if (entry.isIntersecting) {
-                            revealNode(entry.target);
-                            io.unobserve(entry.target);
-                        }
-                    });
-                }, { threshold: 0.08, rootMargin: '0px 0px -5% 0px' });
-                revealNodes.forEach(function (n) { io.observe(n); });
-            } else {
-                revealNodes.forEach(function (n) { revealNode(n); });
-            }
-
-            var hero = document.querySelector('.tw-hero.tw-reveal');
-            if (hero) {
-                revealNode(hero);
-            }
-
-            (function () {
-                if (prefersReducedMotion) return;
-                var bg = document.querySelector('.tw-bg');
-                if (!bg) return;
-                var ticking = false;
-
-                function update() {
-                    ticking = false;
-                    var y = window.scrollY || window.pageYOffset || 0;
-                    var shift = Math.max(-32, Math.min(32, (y * -0.04)));
-                    bg.style.setProperty('--tw-bg-shift', shift.toFixed(2) + 'px');
-                }
-
-                update();
-                window.addEventListener('scroll', function () {
-                    if (ticking) return;
-                    ticking = true;
-                    requestAnimationFrame(update);
-                }, { passive: true });
-            })();
-
-            var form = document.querySelector('form[name="android-beta"]');
-            if (!form) return;
-            var status = form.querySelector('.tw-beta-status');
-
-            form.addEventListener('submit', function (e) {
-                e.preventDefault();
-                if (status) status.textContent = 'Sending…';
-
-                var formData = new FormData(form);
-                var body = new URLSearchParams(formData).toString();
-
-                fetch('/', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                    body: body
-                }).then(function () {
-                    if (status) status.textContent = 'Request received. We’ll email you if we need anything else.';
-                    form.reset();
-                }).catch(function () {
-                    if (status) status.textContent = 'Could not send right now. Please email andyblewett991@gmail.com.';
-                });
-            });
-        })();
-    </script>
 </body>
 </html>
