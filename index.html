@@ -294,20 +294,10 @@
                 revealNodes.forEach(function (n) { revealNode(n); });
             }
 
-            setTimeout(function () {
-                try {
-                    revealNodes.forEach(function (n) { n.classList.add('is-visible'); });
-                } catch (e) {}
-            }, 2200);
-
-            revealNodes.forEach(function (n) {
-                try {
-                    var rect = n.getBoundingClientRect();
-                    if (rect.top < (window.innerHeight || document.documentElement.clientHeight) * 0.92) {
-                        revealNode(n);
-                    }
-                } catch (e) {}
-            });
+            var hero = document.querySelector('.tw-hero.tw-reveal');
+            if (hero) {
+                revealNode(hero);
+            }
 
             (function () {
                 if (prefersReducedMotion) return;
