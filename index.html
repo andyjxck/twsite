@@ -76,8 +76,9 @@
                 <section class="tw-section tw-reveal" id="tour">
                     <h2 class="tw-section-title">What you can do on Town Wall.</h2>
                     <p class="tw-subtitle">Not a checklist — the basics done properly, with a local-first spine.</p>
+                </section>
 
-                    <div class="tw-tour">
+                <section class="tw-tour tw-reveal tw-accent-indigo">
                         <div class="tw-tour-text">
                             <div class="tw-kicker">Feed</div>
                             <h3>Global → City → Zone.</h3>
@@ -85,13 +86,13 @@
                             <p>React, reply, save, share — without the noise.</p>
                         </div>
                         <div class="tw-tour-media">
-                            <div class="tw-media-frame">
+                            <div class="tw-media-frame tw-frame-landscape">
                                 <img src="/assets/screenshot-feed.png" alt="Town Wall feed screenshot">
                             </div>
                         </div>
-                    </div>
+                </section>
 
-                    <div class="tw-tour">
+                <section class="tw-tour tw-reveal tw-accent-emerald">
                         <div class="tw-tour-text">
                             <div class="tw-kicker">Posting</div>
                             <h3>Post types that feel native to the town square.</h3>
@@ -102,22 +103,22 @@
                                 <img src="/assets/screenshot-post.png" alt="Town Wall post screenshot">
                             </div>
                         </div>
-                    </div>
+                </section>
 
-                    <div class="tw-tour">
+                <section class="tw-tour tw-reveal tw-accent-pink">
                         <div class="tw-tour-text">
                             <div class="tw-kicker">Chat</div>
                             <h3>Messaging that respects boundaries.</h3>
                             <p>DMs, group chats, and chat requests — plus voice/video calls when you need to talk properly.</p>
                         </div>
                         <div class="tw-tour-media">
-                            <div class="tw-media-frame">
+                            <div class="tw-media-frame tw-frame-landscape">
                                 <img src="/assets/screenshot-chat.png" alt="Town Wall chat screenshot">
                             </div>
                         </div>
-                    </div>
+                </section>
 
-                    <div class="tw-tour">
+                <section class="tw-tour tw-reveal tw-accent-amber">
                         <div class="tw-tour-text">
                             <div class="tw-kicker">Discovery</div>
                             <h3>Find businesses and talent nearby.</h3>
@@ -128,9 +129,9 @@
                                 <img src="/assets/screenshot-businesses.png" alt="Town Wall businesses screenshot">
                             </div>
                         </div>
-                    </div>
+                </section>
 
-                    <div class="tw-tour">
+                <section class="tw-tour tw-reveal tw-accent-cyan">
                         <div class="tw-tour-text">
                             <div class="tw-kicker">Talent</div>
                             <h3>Local creators deserve local discovery.</h3>
@@ -138,13 +139,13 @@
                             <p>Profiles support a bio, portfolio images, social links, and verification — built to turn “I saw your post” into “I booked you.”</p>
                         </div>
                         <div class="tw-tour-media">
-                            <div class="tw-media-frame">
+                            <div class="tw-media-frame tw-frame-landscape">
                                 <img src="/assets/screenshot-talent.png" alt="Town Wall talent screenshot">
                             </div>
                         </div>
-                    </div>
+                </section>
 
-                    <div class="tw-tour">
+                <section class="tw-tour tw-reveal tw-accent-violet">
                         <div class="tw-tour-text">
                             <div class="tw-kicker">Towny</div>
                             <h3>Help, instantly — without digging through menus.</h3>
@@ -156,9 +157,9 @@
                                 <img src="/assets/screenshot-towny.png" alt="Towny assistant screenshot">
                             </div>
                         </div>
-                    </div>
+                </section>
 
-                    <div class="tw-tour">
+                <section class="tw-tour tw-reveal tw-accent-rose">
                         <div class="tw-tour-text">
                             <div class="tw-kicker">Calls</div>
                             <h3>When a message isn’t enough, call.</h3>
@@ -166,13 +167,13 @@
                             <p>Controls are simple: mute, camera toggle, speaker, and call timer — with the same block/report controls you’d expect elsewhere.</p>
                         </div>
                         <div class="tw-tour-media">
-                            <div class="tw-media-frame">
+                            <div class="tw-media-frame tw-frame-landscape">
                                 <img src="/assets/screenshot-calls.png" alt="Town Wall calls screenshot">
                             </div>
                         </div>
-                    </div>
+                </section>
 
-                    <div class="tw-tour">
+                <section class="tw-tour tw-reveal tw-accent-teal">
                         <div class="tw-tour-text">
                             <div class="tw-kicker">Polls</div>
                             <h3>Let the community decide.</h3>
@@ -184,7 +185,6 @@
                                 <img src="/assets/screenshot-polls.png" alt="Town Wall polls screenshot">
                             </div>
                         </div>
-                    </div>
                 </section>
 
                 <section class="tw-section tw-reveal tw-section-alt" id="privacy">
@@ -257,7 +257,7 @@
                 prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
             } catch (e) {}
 
-            var revealNodes = Array.prototype.slice.call(document.querySelectorAll('.tw-hero.tw-reveal, .tw-section.tw-reveal'));
+            var revealNodes = Array.prototype.slice.call(document.querySelectorAll('.tw-hero.tw-reveal, .tw-section.tw-reveal, .tw-tour.tw-reveal'));
 
             function clamp(n, min, max) {
                 return Math.max(min, Math.min(max, n));

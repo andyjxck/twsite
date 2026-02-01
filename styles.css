@@ -504,6 +504,14 @@ pre {
   transform: translateZ(0);
 }
 
+.tw-media-frame.tw-frame-landscape {
+  aspect-ratio: 16 / 10;
+}
+
+.tw-media-frame.tw-frame-landscape img {
+  object-position: center top;
+}
+
 .tw-media-frame img {
   width: 100%;
   height: 100%;
@@ -515,6 +523,79 @@ pre {
 
 .tw-tour:hover .tw-media-frame img {
   transform: scale(1.05);
+}
+
+.tw-tour.tw-reveal {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  padding: 46px 0;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.tw-tour.tw-reveal + .tw-tour.tw-reveal {
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.tw-js.tw-anim .tw-tour.tw-reveal::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(900px 520px at 50% 12%, rgba(0,0,0,0.00) 0%, rgba(0,0,0,0.18) 44%, rgba(0,0,0,0.58) 74%, rgba(0,0,0,0.88) 100%);
+  opacity: 1;
+  transform: translateY(16px) scale(1.03);
+  transition: opacity 900ms cubic-bezier(0.2, 0.8, 0.2, 1), transform 1200ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition-delay: var(--tw-reveal-delay, 0ms);
+  pointer-events: none;
+}
+
+.tw-js.tw-anim .tw-tour.tw-reveal.is-visible::after {
+  opacity: 0;
+  transform: translateY(0) scale(1);
+}
+
+.tw-tour.tw-reveal::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.12;
+  pointer-events: none;
+  transition: opacity 900ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.tw-tour.tw-accent-indigo::before {
+  background: radial-gradient(900px 400px at 20% 30%, rgba(99, 102, 241, 0.6), transparent 60%);
+}
+
+.tw-tour.tw-accent-emerald::before {
+  background: radial-gradient(900px 400px at 80% 40%, rgba(16, 185, 129, 0.6), transparent 60%);
+}
+
+.tw-tour.tw-accent-pink::before {
+  background: radial-gradient(900px 400px at 30% 50%, rgba(236, 72, 153, 0.6), transparent 60%);
+}
+
+.tw-tour.tw-accent-amber::before {
+  background: radial-gradient(900px 400px at 70% 30%, rgba(245, 158, 11, 0.6), transparent 60%);
+}
+
+.tw-tour.tw-accent-cyan::before {
+  background: radial-gradient(900px 400px at 25% 60%, rgba(6, 182, 212, 0.6), transparent 60%);
+}
+
+.tw-tour.tw-accent-violet::before {
+  background: radial-gradient(900px 400px at 75% 50%, rgba(139, 92, 246, 0.6), transparent 60%);
+}
+
+.tw-tour.tw-accent-rose::before {
+  background: radial-gradient(900px 400px at 40% 40%, rgba(244, 63, 94, 0.6), transparent 60%);
+}
+
+.tw-tour.tw-accent-teal::before {
+  background: radial-gradient(900px 400px at 60% 60%, rgba(20, 184, 166, 0.6), transparent 60%);
 }
 
 .tw-beta {
