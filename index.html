@@ -210,6 +210,44 @@ body {
     margin-bottom: 8px;
 }
 
+/* STACKED SECTION (image above, text below) */
+.section-stacked {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.media-full {
+    width: 100%;
+    border-radius: 24px;
+    overflow: hidden;
+    margin-bottom: 40px;
+}
+
+.media-full img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.stacked-text {
+    text-align: center;
+    max-width: 600px;
+}
+
+.stacked-text h3 {
+    font-size: 32px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+}
+
+.stacked-text p {
+    font-size: 17px;
+    color: #86868b;
+    margin-bottom: 8px;
+}
+
 /* BACKGROUND SECTIONS */
 .bg-section {
     position: relative;
@@ -429,12 +467,14 @@ body {
 
 /* Images fade in FIRST */
 .fade .media-portrait,
+.fade .media-full,
 .fade .bg-img img {
     opacity: 0;
     transform: scale(0.95);
 }
 
-.fade.visible .media-portrait {
+.fade.visible .media-portrait,
+.fade.visible .media-full {
     animation: scaleIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
@@ -451,6 +491,8 @@ body {
 .fade .row-text p,
 .fade .row-text-center h3,
 .fade .row-text-center p,
+.fade .stacked-text h3,
+.fade .stacked-text p,
 .fade .section-sub,
 .fade .bg-content h3,
 .fade .bg-content p {
@@ -460,12 +502,16 @@ body {
 
 .fade.visible .row-text h3,
 .fade.visible .row-text-center h3,
+.fade.visible .stacked-text h3,
 .fade.visible .bg-content h3 {
     animation: lineReveal 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
 }
 
 .fade.visible .row-text-center p:nth-child(2) { animation: lineReveal 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.55s forwards; }
 .fade.visible .row-text-center p:nth-child(3) { animation: lineReveal 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.7s forwards; }
+
+.fade.visible .stacked-text p:nth-child(2) { animation: lineReveal 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.55s forwards; }
+.fade.visible .stacked-text p:nth-child(3) { animation: lineReveal 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.7s forwards; }
 
 .fade.visible .row-text p:nth-child(2),
 .fade.visible .section-sub { animation: lineReveal 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.55s forwards; }
@@ -693,11 +739,11 @@ body {
     </section>
 
     <!-- TOWNY -->
-    <section class="bg-section bg-section-full fade">
-        <div class="bg-img">
-            <img src="/assets/screenshot-towny.png" alt="">
+    <section class="section section-stacked fade">
+        <div class="media-full">
+            <img src="/assets/screenshot-towny.png" alt="Towny AI Assistant">
         </div>
-        <div class="bg-content">
+        <div class="stacked-text">
             <h3>Towny</h3>
             <p>Not just a help bot, but also a friend.</p>
             <p>Towny knows everything about the app. Test him, or he can help if you need it.</p>
